@@ -1,55 +1,22 @@
-# Browser Solidity Compiler
-Inspired by https://github.com/ethereum/solc-js, This browser solidity compiler works in your browser environments built with Reactjs, vueJS etc.
+Will work in your browser after the first compilation.
+Web runner now wont be unable to resolve.
+Everything is fixed and minimized.
 
-### Installation
-```
-npm i @agnostico/browser-solidity-compiler
-```
 
-or with yarn
-```
-yarn add @agnostico/browser-solidity-compiler
-```
+Example usage in react project:
 
-### Then import your application
-```
-import { solidityCompiler, getCompilerVersions } from "@agnostico/browser-solidity-compiler";
-```
-##### To load available solidity versions from https://binaries.soliditylang.org/bin/list.json
+import { solidityCompiler } from "../../browser-solidity-compiler/src/index";
 
-```
-await getCompilerVersions()
-```
-This returns an object containing
-1. Release versions
-2. Latest release version
-3. Builds (releases + nightly versions)
 
-##### To compile a contract
-```
-await solidityCompiler({
-  version: `https://binaries.soliditylang.org/bin/${version}`,
-  contractBody: content,
-  options,
-})
-```
-
-| Name | Type | Required | Default
-|-|-|-|-|
-| version | `string` | Yes | 
-| contractBody | `string` | Yes |
-| options | `object` | No | { } |
-
-The options parameter currently ONLY supports the choice to add optimization
-
-```
-options.optimizer = {
-  enabled: boolean,
-  runs: number,
-}
-```
-
-[example](https://github.com/rexdavinci/browser-solidity-compiler/tree/example)
+  const compile = async() =>{
+    const version = 'soljson-v0.8.20+commit.a1b79de6.js'; 
+    const result = await solidityCompiler({
+      version: `https://binaries.soliditylang.org/bin/${version}`,
+      contractBody: contractCode,
+      options:{optimizer:{enabled:true,runs:1000}}
+    })
+    return result;
+  }
 
 
 
