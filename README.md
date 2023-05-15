@@ -7,7 +7,7 @@ Example usage in react project:
 
 import { solidityCompiler } from "../../browser-solidity-compiler/src/index";
 
-
+```
   const compile = async() =>{
     const version = 'soljson-v0.8.20+commit.a1b79de6.js'; 
     const result = await solidityCompiler({
@@ -17,7 +17,7 @@ import { solidityCompiler } from "../../browser-solidity-compiler/src/index";
     })
     return result;
   }
-
+```
 
 
 
